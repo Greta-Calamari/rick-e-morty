@@ -16,12 +16,16 @@ export default {
             inputText:'',
         }
     },methods:{
-        search(){
-            console.log(this.inputText)
-            
-        },
+        
         reset(){
-            this.inputText=''
+            this.inputText='';
+            this.$emit('mySearch',this.inputText)
+        },
+        search(){
+            this.$emit('mySearch',this.inputText);
+            this.inputText='';
+
+
         },
     }
 }
