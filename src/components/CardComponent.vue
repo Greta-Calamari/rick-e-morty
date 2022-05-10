@@ -1,50 +1,47 @@
 <template>
-<!-- {
-        "id": 1,
-        "name": "Rick Sanchez",
-        "status": "Alive",
-        "species": "Human",
-        "type": "Human",
-        "gender": "Male",
-        "origin": "Earth (C-137)",
-        "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
-    }, -->
-<div class="text-center">
-    <img class="img-fluid" :src="item.image" alt="item.name">
-    <h4 class="mt-3">{{item.name}}</h4>
-    <div>{{item.origin}}</div>
-    <div class="fw-bold">{{item.type}}</div>
-</div>
-  
+  <div class="card text-center bg-transparent">
+      <img class="rounded-circle img-fluid" :src="item.image" alt="item.name">
+      <h4 class="name">{{item.name}}</h4>
+      <div>{{item.origin}}</div>
+      <div class="specie">{{item.species}}</div>
+            <!-- id {{item.id}} - name {{item.name}} - stato {{item.status}} - type {{item.type}} - species{{item.species}}  -->
+  </div>
 </template>
 
 <script>
-
 export default {
     name:'CardComponent',
     props:{
-        item: Object
+        item:Object
     }
 }
 </script>
-
-<style  lang="scss" scoped>
-@import '../style/vars.scss';
-
-h4{
-    text-transform: uppercase;
-    &:after{
-        content: '';
-        display: block;
-        width: 50px;
-        height: 2px;
-        margin: 1rem auto;
-        background-color: currentColor;
+<style lang="scss" scoped>
+.card{
+    border: none;
+    padding: 10px;
+    .name{
+        padding: 3px;
     }
-}
-img{
-    border-radius: 50%;
-    box-shadow: 0 0 6px 3px rgba(#000, 0.15); 
+    img{
+            box-shadow: 0 0 6px 3px rgba(#000, 0.15);
+        }
+    h4{
+        text-transform: uppercase;
+        font-size: 0.9em;
+        &:after{
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            margin: 0.5rem auto;
+            background: currentColor;
+        }
+        
+    }
+    .specie{
+        font-weight: bold;
+    }
 }
 
 </style>

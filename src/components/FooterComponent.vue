@@ -1,17 +1,13 @@
 <template>
-<footer>
-    <div class="text-center">
-        Found {{len}} character
-    </div>
-
-</footer>
-  
+  <div class="text-center">
+      Found {{len}} species
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'FooterComponent',
-    props: {
+    name:'FooterComponent',
+    props:{
         len:Number
     }
 }

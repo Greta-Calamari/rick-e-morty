@@ -1,37 +1,42 @@
 <template>
-<div>
-    <!-- @keyup.enter="search" -->
-  <select type="text" v-model="inputText" @change="changeSearch" >
-      <option :value="specie" v-for="specie in characterSpecies" :key="specie">{{specie}}</option>
-      <option value="">all</option>
-  </select>
-  <button class="btn btn-outline-secondary" type="button" @click="search">Cerca</button>
-  <button class="btn btn-outline-secondary" type="button" @click="reset">Reset</button>
-<!-- <div class="input-group">
-</div> -->
+  <div class="input-group mb-3 w-100">
+    <select name="species" id="species" v-model="inputText" @change="changeSearch">
+        <option value="">all</option>
+        <option :value="specie" v-for="(specie,index) in characterSpecies" :key="index">{{specie}}</option>
+    </select>
+    <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" @click="changeSearch">Search</button>
+        <button class="btn btn-outline-secondary" type="button" @click="reset">Reset</button>
+    </div>
 </div>
-    
 </template>
+
 <script>
+import store from '../store.js'
 export default {
     name:'SearchBar',
     data(){
         return{
             inputText:'',
         }
-    },props:['characterSpecies'],
+    },
+    computed:{
+        characterSpecies(){
+            return store.state.speciesList 
+        }
+    },
     methods:{
-        
+        changeSearch(){
+            store.setText(this.inputText);
+        },
         reset(){
-            this.inputText='';
-            this.$emit('mySearch',this.inputText)
-        },
-        search(){
-            this.$emit('mySearch',this.inputText);
-            this.inputText='';
-
-
-        },
+            this.inputText=''
+            store.setText(this.inputText);
+        }
     }
 }
 </script>
+
+<style lang="scss">
+
+</style>
